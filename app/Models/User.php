@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -45,4 +47,39 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function follow(User $user): void
+    {
+        if(!$this->isFollowing($user)) {
+            Follow::create([
+                'user_id' => auth()->id(),
+                'following_id' => $user->id
+            ]);
+        }
+    }
+
+    public function unfollow(User $user): void
+    {
+        Follow::where('user_id', auth()->id())->where('following_id', $user->id)->delete();
+    }
+
+    public function isFollowing(User $user) {
+        return $this->following()->where('users.id', $user->id)->exists();
+    }
+
+    public function following(): HasManyThrough
+    {
+        return $this->hasManyThrough(User::class, Follow::class, 'user_id', 'id', 'id', 'following_id');
+    }
+
+    public function followers(): HasManyThrough
+    {
+        return $this->hasManyThrough(User::class, Follow::class, 'following_id', 'id', 'id', 'user_id');
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
 }
