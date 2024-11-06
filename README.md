@@ -6,7 +6,7 @@ https://www.loom.com/share/3d90062cffdb4b12802ec10652defbc1?sid=d79517f0-23ba-46
 
 ## Setting up the app
 
-- git pull "git@github.com:thomasjohnkane/lender-home-page.git"
+- `git pull git@github.com:thomasjohnkane/lender-home-page.git`
 - composer install/npm run dev
 - php artisan migrate
 - etc...
