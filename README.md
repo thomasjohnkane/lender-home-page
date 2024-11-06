@@ -2,23 +2,23 @@
 
 ## Video of the app
 
-https://www.loom.com/share/3d90062cffdb4b12802ec10652defbc1?sid=d79517f0-23ba-4662-9bd9-37891a92c809
+(https://www.loom.com/share/3d90062cffdb4b12802ec10652defbc1?sid=d79517f0-23ba-4662-9bd9-37891a92c809)
 
 ## Setting up the app
 
-- git pull git@github.com:thomasjohnkane/lender-home-page.git
+- git pull "git@github.com:thomasjohnkane/lender-home-page.git"
 - composer install/npm run dev
 - php artisan migrate
 - etc...
-- here isn't anything out of the ordinary
+- There isn't anything out of the ordinary
 
 # Dependencies
-Laravel
-Laravel Breeze (inertia/Tailwind)
-Vue3
-No added packages
+- Laravel
+- Laravel Breeze (inertia/Tailwind)
+- Vue3
+- No added packages
 
-## Candidate Cover Letter
+## Candidate Cover Letter from Application
 
 Hello,
 
